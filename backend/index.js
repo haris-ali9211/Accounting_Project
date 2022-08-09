@@ -1,5 +1,7 @@
 const express = require('express')
 const sql = require('mssql')
+const cors = require('cors')
+
 var config = {
     user: "sa", //default is sa
     password: "92111192",
@@ -21,6 +23,7 @@ const appPool = new sql.ConnectionPool(config)
 //require route handlers and use the same connection pool everywhere
 const sqlRoutes = require('./routes/sqlRoutes')
 const app = express()
+app.use(cors());
 app.use('/sql', sqlRoutes)
 
 
