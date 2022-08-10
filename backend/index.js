@@ -24,6 +24,7 @@ const appPool = new sql.ConnectionPool(config)
 const sqlRoutes = require('./routes/sqlRoutes')
 const app = express()
 app.use(cors());
+app.use(express.json())
 app.use('/sql', sqlRoutes)
 
 
