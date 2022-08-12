@@ -6,7 +6,7 @@ var config = {
     user: "sa", //default is sa
     password: "92111192",
     server: "192.168.0.109", // for local machine
-    database: "Accounting_prtotype_02", // name of database
+    database: "Accounting_prototype_03", // name of database
     options: {
         encrypt: false //check later izhan
     },

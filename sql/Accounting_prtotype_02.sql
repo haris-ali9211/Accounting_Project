@@ -33,6 +33,13 @@ select * from Entry_Account
 inner join Credit_Info on Entry_Account.Entry_id=Credit_Info.Entry_id 
 inner join Debit_Info on Credit_Info.Entry_id = Debit_Info.Entry_id
 
+select * from Credit_Info
+inner join Debit_Info on Credit_Info.Entry_id = Debit_Info.Entry_id 
+
+select * from Credit_Info where Entry_id= 2
+update Credit_Info set Credit_Data = 'unique' where Entry_id = 2
+update Credit_Info set Credit_Data = 'unique01' where Credit_Data_Amount= 112000
+
 delete from Debit_Info where Entry_id = 2
 delete from Credit_Info where Entry_id = 1
 delete from Credit_Info where Credit_Data = 'account payable'
@@ -54,3 +61,8 @@ equity 404,
 expense 405,
 drawing 406,
 revenue
+
+DROP TABLE Credit_Info;
+DROP TABLE Debit_Info;
+DROP TABLE Entry_Account;
+

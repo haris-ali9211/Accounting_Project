@@ -59,4 +59,22 @@ router.post("/creditInfo", (req, res) => {
 })
 
 
+router.get("/creditData", (req, res) => {
+  req.app.locals.db.query(`SELECT *
+  FROM Entry_Account
+  inner JOIN Debit_Info
+  ON Entry_Account.Entry_id = Debit_Info.Entry_id
+  inner JOIN Credit_Info
+  ON Debit_Info.Entry_id = Credit_Info.Debit_id`, function (err, recordset) {
+    if (err) {
+      console.error(err)
+      res.status(500).send('SERVER ERROR')
+      return
+    }
+    res.status(200).json(recordset.recordset)
+  })
+})
+
+
+
 module.exports = router
