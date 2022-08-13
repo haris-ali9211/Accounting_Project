@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import db from '../firebase/firebasev9';
+import firebaseStack from '../firebase/firebasev9';
+import { ref, set } from "firebase/database"
+
+
 
 const defaultValue = {
     email: '',
@@ -11,8 +14,11 @@ const defaultValue = {
 function BasicExample() {
 
     const [data, setData] = useState(defaultValue);
-    const database = getDatabase();
+    const [counter, seCounter]= useState(0)
+    const db = firebaseStack();
 
+
+    
     const onValueChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
         console.log("🚀 ~ file: Input.jsx ~ line 18 ~ onValueChange ~ user", data)
@@ -22,7 +28,10 @@ function BasicExample() {
     const handelChange = (e) => {
         e.preventDefault()
         console.log("🚀 ~ file: Input.jsx ~ line 24 ~ handelChange ~ e", e)
-        const db = database();
+        set(ref(db, 'users/'+ Math.floor(Math.random() * 1000)), {
+        // set(ref(db, 'users/'), {
+            data
+        });
     }
     return (
         <Form>
