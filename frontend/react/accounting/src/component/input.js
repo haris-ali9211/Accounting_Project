@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Toast from 'react-bootstrap/Toast';
 import FirebaseStack from '../firebase/firebasev9';
-import { ref, set, dbRef, get, child } from "firebase/database"
+import { ref, set } from "firebase/database"
 
 const objData = {
     title: "",
@@ -31,10 +29,10 @@ function AddRecords() {
     const [data, setData] = useState(objData)
     const [debitData, setDebitData] = useState([])
     const [creditData, setCreditData] = useState([])
+    const [counter, setCounter] = useState(0)
     // console.log("🚀 ~ file: input.js ~ line 35 ~ AddRecords ~ currentData", currentData)
 
     const db = FirebaseStack();
-    const dbRef = ref(FirebaseStack());
 
 
     const toggleShowA = () => setShowA(!showA);
@@ -57,7 +55,7 @@ function AddRecords() {
     const addRecord = (e) => {
         e.preventDefault();
         setRecordsDataObj([...recordsDataObj, data]);
-        if (data.type == 'debit') {
+        if (data.type === 'debit') {
             setDebitData([...debitData, data])
         }
         else {
@@ -84,7 +82,7 @@ function AddRecords() {
         // objData = {}
         // setData([])
         // console.log("🚀 ~ file: input.js ~ line 86 ~ submitRecords ~ setData", data)
-        
+
 
 
         var today = new Date();
@@ -94,11 +92,12 @@ function AddRecords() {
         var data01 = []
         const obj = { 'debit': debitData }
         const obj1 = { 'credit': creditData }
-        data01.push(`${date} ${time}`)
+        // data01.push(`${date} ${time}`)
         data01.push(obj)
         data01.push(obj1)
-        set(ref(db, 'record/'), {
-            data01
+        set(ref(db, 'record/' + counter), {
+            'debit': debitData,
+            'credit': creditData
         });
         setCreditData([]);
         setDebitData([]);
@@ -109,27 +108,11 @@ function AddRecords() {
         for (const key in obj1) {
             delete obj[key];
         }
+        setCounter(counter + 1)
     }
 
-
-    // const getData = async () => {
-    //     get(child(dbRef, `record/`)).then((snapshot) => {
-    //         if (snapshot.exists()) {
-    //             console.log(snapshot.val());
-    //         } else {
-    //             console.log("No data available");
-    //         }
-    //     }).catch((error) => {
-    //         console.error(error);
-    //     });
-    // }
-
-    // useEffect(() => {
-    //     getData()
-    // }, [])
-
     return (
-        <Container style={{ backgroundColor: "black" }}>
+        <Container>
             <Row className='debit-form mt-5'>
                 <Col>
 

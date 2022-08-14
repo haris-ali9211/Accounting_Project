@@ -1,0 +1,130 @@
+{
+  "record": [
+    {
+      "data01": [
+        {
+          "debit": [
+            {
+              "amount": "45000",
+              "nature": "asset",
+              "title": "cash",
+              "type": "debit"
+            }
+          ]
+        },
+        {
+          "credit": [
+            {
+              "amount": "45000",
+              "nature": "liability",
+              "title": "capital",
+              "type": "credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data01": [
+        {
+          "debit": [
+            {
+              "amount": "140000",
+              "nature": "asset",
+              "title": "land",
+              "type": "debit"
+            }
+          ]
+        },
+        {
+          "credit": [
+            {
+              "amount": "28000",
+              "nature": "asset",
+              "title": "cash",
+              "type": "credit"
+            },
+            {
+              "amount": "112000",
+              "nature": "liability",
+              "title": "notes payable",
+              "type": "credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data01": [
+        {
+          "debit": [
+            {
+              "amount": "4000",
+              "nature": "asset",
+              "title": "building",
+              "type": "debit"
+            }
+          ]
+        },
+        {
+          "credit": [
+            {
+              "amount": "4000",
+              "nature": "liability",
+              "title": "cash",
+              "type": "credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data01": [
+        {
+          "debit": [
+            {
+              "amount": "3000",
+              "nature": "asset",
+              "title": "office equipment",
+              "type": "debit"
+            }
+          ]
+        },
+        {
+          "credit": [
+            {
+              "amount": "3000",
+              "nature": "liability",
+              "title": "account payable",
+              "type": "credit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data01": [
+        {
+          "debit": [
+            {
+              "amount": "2000",
+              "nature": "liability",
+              "title": "account payable",
+              "type": "debit"
+            }
+          ]
+        },
+        {
+          "credit": [
+            {
+              "amount": "2000",
+              "nature": "liability",
+              "title": "cash",
+              "type": "credit"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
