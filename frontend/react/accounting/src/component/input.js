@@ -20,7 +20,7 @@ const objData = {
 
 }
 function AddRecords() {
-    
+
     const [validated, setValidated] = useState(false);
     const [recordsDataObj, setRecordsDataObj] = useState([])
 
@@ -29,6 +29,9 @@ function AddRecords() {
     const [showB, setShowB] = useState(true);
 
     const [data, setData] = useState(objData)
+    const [debitData, setDebitData] = useState([])
+    const [creditData, setCreditData] = useState([])
+    // console.log("🚀 ~ file: input.js ~ line 35 ~ AddRecords ~ currentData", currentData)
 
     const db = FirebaseStack();
     const dbRef = ref(FirebaseStack());
@@ -54,42 +57,79 @@ function AddRecords() {
     const addRecord = (e) => {
         e.preventDefault();
         setRecordsDataObj([...recordsDataObj, data]);
-        const dataArrayObj = [];
-        const currentData={"debit":data}
-        dataArrayObj.push(currentData)
-        console.log("🚀 ~ file: input.js ~ line 61 ~ addRecord ~ dataArrayObj", dataArrayObj)
-    }
+        if (data.type == 'debit') {
+            setDebitData([...debitData, data])
+        }
+        else {
+            setCreditData([...creditData, data])
+        }
 
+        // if(dataArrayObj.some(dataArrayObj => dataArrayObj.debit.type === "debit"))
+        // {
+        //     dataArrayObj[0].debit.push("haris")
+        //     var data1 = {};
+        //     data1 = dataArrayObj[0].debit
+        //     console.log("🚀 ~ file: input.js ~ line 65 ~ addRecord ~ data1", data1)
+        // }
+        // console.log("🚀 ~ file: input.js ~ line 60 ~ addRecord ~ dataArrayObj", dataArrayObj)
+    }
 
     const submitRecords = (e) => {
         e.preventDefault();
-        var submitTableData = recordsDataObj;
-        set(ref(db, 'users/' + Math.floor(Math.random() * 1000)), {
-            submitTableData
-        });
+        // var submitTableData = recordsDataObj;
+        // set(ref(db, 'record/' + Math.floor(Math.random() * 1000)), {
+        //     submitTableData
+        // });
         setRecordsDataObj([]);
-        objData = {}
-        setData(objData)
-    }
+        // objData = {}
+        // setData([])
+        // console.log("🚀 ~ file: input.js ~ line 86 ~ submitRecords ~ setData", data)
+        
 
-    const getData = async () => {
-        get(child(dbRef, `users/`)).then((snapshot) => {
-            if (snapshot.exists()) {
-                console.log(snapshot.val());
-            } else {
-                console.log("No data available");
-            }
-        }).catch((error) => {
-            console.error(error);
+
+        var today = new Date();
+        var date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+        var time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+
+        var data01 = []
+        const obj = { 'debit': debitData }
+        const obj1 = { 'credit': creditData }
+        data01.push(`${date} ${time}`)
+        data01.push(obj)
+        data01.push(obj1)
+        set(ref(db, 'record/'), {
+            data01
         });
+        setCreditData([]);
+        setDebitData([]);
+        data01 = [];
+        for (const key in obj) {
+            delete obj[key];
+        }
+        for (const key in obj1) {
+            delete obj[key];
+        }
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
+
+    // const getData = async () => {
+    //     get(child(dbRef, `record/`)).then((snapshot) => {
+    //         if (snapshot.exists()) {
+    //             console.log(snapshot.val());
+    //         } else {
+    //             console.log("No data available");
+    //         }
+    //     }).catch((error) => {
+    //         console.error(error);
+    //     });
+    // }
+
+    // useEffect(() => {
+    //     getData()
+    // }, [])
 
     return (
-        <Container style={{backgroundColor: "black"}}>
+        <Container style={{ backgroundColor: "black" }}>
             <Row className='debit-form mt-5'>
                 <Col>
 
