@@ -11,7 +11,7 @@ const TrialBalance = () => {
     // console.log("🚀 ~ file: TrialBalance.js ~ line 11 ~ TrialBalance ~ firebaseData", firebaseData)
     const [stopData, setStopData] = useState(true)
     const [titleData, setTitle] = useState()
-    console.log("🚀 ~ file: TrialBalance.js ~ line 14 ~ TrialBalance ~ titleData", titleData)
+    // console.log("🚀 ~ file: TrialBalance.js ~ line 14 ~ TrialBalance ~ titleData", titleData)
 
 
     const getDataFromFirebase = async () => {
@@ -31,18 +31,18 @@ const TrialBalance = () => {
         getDataFromFirebase()
     }, [])
 
-    const getDebitData = async (data) => {
-        data && data.map((object, key) => {
-            console.log("🚀 ~ debit data", object.title)
-        })
-    }
+    // const getDebitData = async (data) => {
+    //     data && data.map((object, key) => {
+    //         console.log("🚀 ~ debit data", object.title)
+    //     })
+    // }
 
-    const getCreditData = async (data) => {
-        var Arr = []
-        data && data.map((object, key) => {
-            Arr.push(object.title)
-        })
-    }
+    // const getCreditData = async (data) => {
+    //     var Arr = []
+    //     data && data.map((object, key) => {
+    //         Arr.push(object.title)
+    //     })
+    // }
 
     useEffect(() => {
         var array = [];
@@ -58,7 +58,7 @@ const TrialBalance = () => {
                 array.push(object.title)
 
             })
-            console.log("🚀 ~ file: TrialBalance.js ~ line 51 ~ firebaseData&&firebaseData.map ~ array", array)
+            // console.log("🚀 ~ file: TrialBalance.js ~ line 51 ~ firebaseData&&firebaseData.map ~ array", array)
             // }
             // else if (obj.credit) {
             //     obj.debit && obj.debit.map((object, key) => {
@@ -70,6 +70,20 @@ const TrialBalance = () => {
         })
         let unique = [...new Set(array)]
         setTitle(unique)
+
+        var entry= []
+        firebaseData && firebaseData.map((obj, key)=>{
+            titleData && titleData.map((object,key)=>{
+                console.log("🚀 ~ file: TrialBalance.js ~ line 77 ~ titleData&&titleData.map ~ object", object)
+                // if(obj.some(obj => obj.debit.type === "debit"))
+
+            })
+            // obj.debit && obj.debit.map((object, key)=>{
+            // console.log("🚀 ~ file: TrialBalance.js ~ line 77 ~ obj.debit&&obj.debit.map ~ object", object)
+            // })
+        })
+
+
     }, [firebaseData])
 
 

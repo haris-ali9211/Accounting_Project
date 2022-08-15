@@ -7,7 +7,6 @@ import TableContent from './TableContent';
 function DarkExample() {
 
     const [firebaseData, setFirebaseData] = useState([]);
-    console.log("🚀 ~ file: Table.js ~ line 10 ~ DarkExample ~ firebaseData", firebaseData)
     const [stopData, setStopData] = useState(true)
 
     const getDataFromFirebase = async () => {
@@ -44,7 +43,7 @@ function DarkExample() {
             </thead>
             <tbody>
                 {firebaseData ? firebaseData.map((obj, key) => {
-                    // console.log("🚀 ~ file: Table.js ~ line 46 ~ {firebaseData?firebaseData.map ~ obj", obj.debit, obj.credit)
+                    // console.log("🚀 ~ file: Table.js ~ line 46 ~ {firebaseData?firebaseData.map ~ obj", obj)
                     return(
                         <TableContent key={key} debit={obj.debit} credit={obj.credit}/>
                     )
