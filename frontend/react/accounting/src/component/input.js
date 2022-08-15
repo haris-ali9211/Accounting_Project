@@ -30,6 +30,7 @@ function AddRecords() {
     const [debitData, setDebitData] = useState([])
     const [creditData, setCreditData] = useState([])
     const [counter, setCounter] = useState(0)
+    const [trailBalanceCounter, setTrailBalanceCounter] = useState(0)
     // console.log("🚀 ~ file: input.js ~ line 35 ~ AddRecords ~ currentData", currentData)
 
     const db = FirebaseStack();
@@ -61,6 +62,10 @@ function AddRecords() {
         else {
             setCreditData([...creditData, data])
         }
+        set(ref(db, 'trailBalance/' + trailBalanceCounter), {
+            data
+        });
+        setTrailBalanceCounter(trailBalanceCounter + 1)
 
         // if(dataArrayObj.some(dataArrayObj => dataArrayObj.debit.type === "debit"))
         // {
@@ -95,7 +100,7 @@ function AddRecords() {
         // data01.push(`${date} ${time}`)
         data01.push(obj)
         data01.push(obj1)
-        set(ref(db, 'record/' + counter), {
+        set(ref(db, 'record1/' + counter), {
             'debit': debitData,
             'credit': creditData
         });

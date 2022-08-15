@@ -1,0 +1,28 @@
+{
+    "trailBalance": [
+        {
+          "data": {
+            "amount": "48000",
+            "nature": "liability",
+            "title": "capital ",
+            "type": "credit"
+          }
+        },
+        {
+          "data": {
+            "amount": "48000",
+            "nature": "asset",
+            "title": "cash",
+            "type": "debit"
+          }
+        },
+        {
+          "data": {
+            "amount": "",
+            "nature": "asset",
+            "title": "ewqe",
+            "type": "credit"
+          }
+        }
+      ]
+}

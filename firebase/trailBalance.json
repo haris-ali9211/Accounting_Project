@@ -1,0 +1,190 @@
+{
+  "record1": [
+    {
+      "credit": [
+        {
+          "amount": "45000",
+          "nature": "liability",
+          "title": "capital ",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "45000",
+          "nature": "asset",
+          "title": "cash",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "28000",
+          "nature": "liability",
+          "title": "cash",
+          "type": "credit"
+        },
+        {
+          "amount": "112000",
+          "nature": "equity",
+          "title": "note payable ",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "140000",
+          "nature": "asset",
+          "title": "land",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "4000",
+          "nature": "liability",
+          "title": "cash",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "4000",
+          "nature": "asset",
+          "title": "building ",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "3000",
+          "nature": "liability",
+          "title": "account payable",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "3000",
+          "nature": "asset",
+          "title": "office equipment ",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "2000",
+          "nature": "liability",
+          "title": "cash",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "2000",
+          "nature": "liability",
+          "title": "account payable",
+          "type": "debit"
+        }
+      ]
+    }
+  ],
+  "trailBalance": [
+    {
+      "data": {
+        "amount": "45000",
+        "nature": "asset",
+        "title": "cash",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "45000",
+        "nature": "liability",
+        "title": "capital ",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "140000",
+        "nature": "asset",
+        "title": "land",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "28000",
+        "nature": "liability",
+        "title": "cash",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "112000",
+        "nature": "equity",
+        "title": "note payable ",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "4000",
+        "nature": "asset",
+        "title": "building ",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "4000",
+        "nature": "liability",
+        "title": "cash",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "3000",
+        "nature": "asset",
+        "title": "office equipment ",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "3000",
+        "nature": "liability",
+        "title": "account payable",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "2000",
+        "nature": "liability",
+        "title": "account payable",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "2000",
+        "nature": "liability",
+        "title": "cash",
+        "type": "credit"
+      }
+    }
+  ]
+}

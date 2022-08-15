@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Input />} />
           <Route path="/table" element={<Table />} />
-          <Route path="/TrialBalance" element={<TrialBalance />} />
+          <Route path="/trialBalance" element={<TrialBalance />} />
         </Routes>
       </BrowserRouter>
     </>
