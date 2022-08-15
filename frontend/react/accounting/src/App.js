@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Input from './component//input'
 import Table from './component/Table';
+import TrialBalance from './component/TrialBalance'
+
 import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,
@@ -16,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Input />} />
           <Route path="/table" element={<Table />} />
+          <Route path="/TrialBalance" element={<TrialBalance />} />
         </Routes>
       </BrowserRouter>
     </>

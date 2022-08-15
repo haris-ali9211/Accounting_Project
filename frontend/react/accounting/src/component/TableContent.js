@@ -10,8 +10,9 @@ const TableContent = ({ debit, credit }) => {
     var today = new Date();
     var date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
     var time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
-    return (
 
+    
+    return (
         <>
             {debitData && debitData.map((obj, key) => {
                 return (
@@ -25,9 +26,9 @@ const TableContent = ({ debit, credit }) => {
                         <td>{`${date} ${time}`}</td>
                     </tr>
                 )
-            })}
+            })
+            }
             {creditData && creditData.map((obj2, key) => {
-                console.log("🚀 ~ file: TableContent.js ~ line 30 ~ {creditData&&creditData.map ~ obj2", obj2)
                 return (
                     <tr key={key}>
                         <td >{key}</td>
