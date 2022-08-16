@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { ref, get, child } from "firebase/database"
 import FirebaseStack from '../firebase/firebasev9';
 import TableContent from './TableContent';
+import './App.css';
 
 function DarkExample() {
 
@@ -29,7 +30,7 @@ function DarkExample() {
     const dbRef = ref(FirebaseStack());
 
     return (
-        <Table striped bordered hover variant="light">
+        <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
                     <th>#</th>
@@ -45,7 +46,7 @@ function DarkExample() {
                 {firebaseData ? firebaseData.map((obj, key) => {
                     // console.log("🚀 ~ file: Table.js ~ line 46 ~ {firebaseData?firebaseData.map ~ obj", obj)
                     return(
-                        <TableContent key={key} debit={obj.debit} credit={obj.credit}/>
+                        <TableContent className='divider' key={key} debit={obj.debit} credit={obj.credit}/>
                     )
                 })
                     :
