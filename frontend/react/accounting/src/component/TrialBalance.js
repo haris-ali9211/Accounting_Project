@@ -15,7 +15,7 @@ const TrialBalance = () => {
     const [trailBalanceData, setTrailBalanceData] = useState([]);
     const [stopData, setStopData] = useState(false)
     const [titleData, setTitle] = useState()
-    // console.log("🚀 ~ file: TrialBalance.js ~ line 17 ~ TrialBalance ~ titleData", titleData)
+    console.log("🚀 ~ file: TrialBalance.js ~ line 17 ~ TrialBalance ~ titleData", titleData)
     const [ledger, setLedger] = useState([])
     const [ledgerDataState, setLedgerDataState] = useState([])
 
@@ -178,7 +178,8 @@ const TrialBalance = () => {
 
     return (
         <>
-            <Table striped bordered hover variant="dark" >
+           <div>
+           <Table striped bordered hover variant="dark" >
                 <thead>
                     <tr>
                         <th>#</th>
@@ -191,10 +192,10 @@ const TrialBalance = () => {
                 <tbody>
                     {
                         ledgerDataState && ledgerDataState.map((object, key) => {
-                            // console.log("🚀 ~ .map ~ object", )
+                            var arr = titleData
                             return (
                                 <>
-                                    <LedgerContent key={key} pros={object.title} />
+                                    <LedgerContent num={key} name={arr[key]} pros={object.title}  />
                                 </>
                             )
                         })
@@ -221,6 +222,7 @@ const TrialBalance = () => {
 
                 </tbody>
             </Table>
+           </div>
             {/* <button onClick={getData}>press me</button> */}
         </>
     )
