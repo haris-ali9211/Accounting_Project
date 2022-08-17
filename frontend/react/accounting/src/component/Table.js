@@ -44,7 +44,7 @@ function DarkExample() {
             </thead>
             <tbody>
                 {firebaseData ? firebaseData.map((obj, key) => {
-                    // console.log("🚀 ~ file: Table.js ~ line 46 ~ {firebaseData?firebaseData.map ~ obj", obj)
+                    console.log("🚀 ~ file: Table.js ~ line 46 ~ {firebaseData?firebaseData.map ~ obj", obj.debit)
                     return(
                         <TableContent className='divider' key={key} debit={obj.debit} credit={obj.credit}/>
                     )
