@@ -15,9 +15,9 @@ const TrialBalance = () => {
     const [trailBalanceData, setTrailBalanceData] = useState([]);
     const [stopData, setStopData] = useState(false)
     const [titleData, setTitle] = useState()
-    console.log("🚀 ~ file: TrialBalance.js ~ line 17 ~ TrialBalance ~ titleData", titleData)
     const [ledger, setLedger] = useState([])
     const [ledgerDataState, setLedgerDataState] = useState([])
+    console.log("🚀 ~ file: TrialBalance.js ~ line 20 ~ TrialBalance ~ ledgerDataState", ledgerDataState)
 
 
     useEffect(() => {
@@ -84,7 +84,7 @@ const TrialBalance = () => {
                 }
             })
         })
-
+        
         setLedger(arrData)
         setStopData(true)
     }
