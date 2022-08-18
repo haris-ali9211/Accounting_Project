@@ -9,6 +9,7 @@ const BalanceSheet =()=>{
     const [ledger, setLedger] = useState([])
     const [titleData, setTitle] = useState()
     const [ledgerDataState, setLedgerDataState] = useState([])
+    console.log("🚀 ~ file: balanceSheet.js ~ line 12 ~ BalanceSheet ~ ledgerDataState", ledgerDataState)
 
     const dbRef = ref(FirebaseStack());
     const db = FirebaseStack();
@@ -20,6 +21,10 @@ const BalanceSheet =()=>{
     useEffect(() => {
         filter()
     }, [ledger])
+
+    useEffect(()=>{
+        getData()
+    },[trailBalanceData])
 
     const getTrailBalanceData = async () => {
         get(child(dbRef, `trailBalance/`)).then((snapshot) => {
@@ -34,6 +39,20 @@ const BalanceSheet =()=>{
             console.error(error);
         });
 
+    }
+
+    const getData = async () => {
+        var arr = titleData
+        var arrData = []
+        arr && arr.map((objArr) => {
+            trailBalanceData.map((obj) => {
+                if (obj.data.title == objArr) {
+                    arrData.push(obj)
+                }
+            })
+        })
+        
+        setLedger(arrData)
     }
 
     const filter = () => {
@@ -112,8 +131,8 @@ const BalanceSheet =()=>{
 
             const filtered = filterPlainArray(arr, filters);
             //     arr[temp] = obj
-            var title = `${obj}`
-            var objT = { title: filtered }
+            var title = obj
+            var objT = { [title]: filtered }
             ledgerData.push(objT)
             // for (const key in objT) {
             //     delete objT[key];
@@ -125,7 +144,7 @@ const BalanceSheet =()=>{
 
     return(
         <>
-        <p>hekki</p>
+        <p>BalanceSheet</p>
         </>
     )
 }
