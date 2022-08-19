@@ -5,26 +5,40 @@ import { get, child, ref } from "firebase/database"
 
 const BalanceSheet =()=>{
 
-    const [trailBalanceData, setTrailBalanceData] = useState([]);
-    const [ledger, setLedger] = useState([])
-    const [titleData, setTitle] = useState()
-    const [ledgerDataState, setLedgerDataState] = useState([])
-    console.log("🚀 ~ file: balanceSheet.js ~ line 12 ~ BalanceSheet ~ ledgerDataState", ledgerDataState)
-
     const dbRef = ref(FirebaseStack());
     const db = FirebaseStack();
+
+
+    const [trailBalanceData, setTrailBalanceData] = useState([]);
+    const [stopData, setStopData] = useState(false)
+    const [titleData, setTitle] = useState()
+    const [ledger, setLedger] = useState([])
+    const [ledgerDataState, setLedgerDataState] = useState([])
+
 
     useEffect(() => {
         getTrailBalanceData();
     }, [])
 
     useEffect(() => {
+        getUniqueData()
+        getData()
+        filter()
+    }, [trailBalanceData])
+
+    useEffect(() => {
         filter()
     }, [ledger])
 
-    useEffect(()=>{
-        getData()
-    },[trailBalanceData])
+
+    const getUniqueData = () => {
+        var array = [];
+        trailBalanceData && trailBalanceData.map((obj, key) => {
+            array.push(obj.data.title)
+        })
+        let unique = [...new Set(array)]
+        setTitle(unique)
+    }
 
     const getTrailBalanceData = async () => {
         get(child(dbRef, `trailBalance/`)).then((snapshot) => {
@@ -53,58 +67,10 @@ const BalanceSheet =()=>{
         })
         
         setLedger(arrData)
+        setStopData(true)
     }
 
     const filter = () => {
-        // var arr = []
-        // titleData && titleData.map((object) => {
-        //     ledger && ledger.map((obj) => {
-        //         var temp = object
-        //         if (obj.data.title == temp) {
-        //             var objTemp = {}
-        // if (!arr.temp) {
-        // arr.temp.push(obj)  
-        // }
-        // else {
-
-        // if (arr.find(arr => arr.temp == temp)) {
-        //     console.log("🚀 ~ file: TrialBalance.js ~ line 102 ~ ledger&&ledger.map ~ arr.find(arr => arr.temp == temp", arr.find(arr => arr.temp == temp))
-        //     arr.temp.push(obj)
-        // }
-        // else {
-        // var objTemp = {temp : obj}
-        // arr.push(objTemp)
-        // for (const key in objTemp) {
-        //     delete obj[key];
-        // }
-        // temp
-        //     arr[temp] = obj
-        //     console.log("🚀 ~  temp", arr.some(aot => aot.cash.data.title === `cash`),)
-
-        // }
-        // }
-        //         }
-
-        //     })
-        // })
-        // let result = ledger.find(obj => obj.data.title === `cash`)
-
-        // if(ledger.some(ledger => ledger.data.title ===  `cash`)){
-        // console.log("🚀 ~", arr)
-
-        // }
-
-        // const objArray = [{ foo: 1, bar: 2 }]
-        // const result = objArray.map(({ foo }) => foo)
-        // console.log(result)
-        // var arr = []
-        // ledger && ledger.map((obj)=>{
-        //     var found = obj.find(obj.data.title === 'cash');
-        //     arr.push(found)
-        // })
-        // console.log("🚀 ~ file: TrialBalance.js ~ line 112 ~ filter ~ arr", arr)
-
-
 
         var arr = []
         var ledgerData = []
@@ -130,13 +96,9 @@ const BalanceSheet =()=>{
             };
 
             const filtered = filterPlainArray(arr, filters);
-            //     arr[temp] = obj
-            var title = obj
-            var objT = { [title]: filtered }
+            var title = `${obj}`
+            var objT = { title: filtered }
             ledgerData.push(objT)
-            // for (const key in objT) {
-            //     delete objT[key];
-            // }
         })
         setLedgerDataState(ledgerData)
 

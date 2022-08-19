@@ -17,7 +17,6 @@ const TrialBalance = () => {
     const [titleData, setTitle] = useState()
     const [ledger, setLedger] = useState([])
     const [ledgerDataState, setLedgerDataState] = useState([])
-    console.log("🚀 ~ file: TrialBalance.js ~ line 20 ~ TrialBalance ~ ledgerDataState", ledgerDataState)
 
 
     useEffect(() => {
@@ -195,7 +194,7 @@ const TrialBalance = () => {
                             var arr = titleData
                             return (
                                 <>
-                                    <LedgerContent num={key} name={arr[key]} pros={object.title}  />
+                                    <LedgerContent key ={key} num={key} name={arr[key]} pros={object.title}  />
                                 </>
                             )
                         })
