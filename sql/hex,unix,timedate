@@ -1,0 +1,28 @@
+const b = Buffer.from([101, 120, 97, 109, 112, 108, 101]);
+console.log(b.toString());
+
+const a = Buffer.from([
+                0,
+                0,
+                0,
+                0,
+                0,
+                41,
+                168,
+                18
+            ]);
+console.log(a);
+
+
+const data = a.toString('hex')
+
+console.log(data);
+
+
+const yourNumber = parseInt(data, 16);
+console.log(yourNumber);
+
+const unixTime = yourNumber;
+const f = new Date(unixTime*1000);
+console.log(f);
+
