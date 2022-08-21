@@ -4,6 +4,8 @@ import Input from './component//input'
 import Table from './component/Table';
 import TrialBalance from './component/TrialBalance'
 import BalanceSheet from './component/balanceSheet';
+import IncomeStatement  from './component/IncomeStatement';
+
 import {
   BrowserRouter,
   Routes,
@@ -19,6 +21,7 @@ function App() {
           <Route path="/table" element={<Table />} />
           <Route path="/trialBalance" element={<TrialBalance />} />
           <Route path="/balanceSheet" element={<BalanceSheet />} />
+          <Route path="/incomeStatement" element={<IncomeStatement />} />
         </Routes>
       </BrowserRouter>
     </>

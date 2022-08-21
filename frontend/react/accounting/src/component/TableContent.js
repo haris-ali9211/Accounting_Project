@@ -19,9 +19,9 @@ const TableContent = ({ debit, credit }) => {
                     <tr key={key}>
                         <td>{key}</td>
                         <td>{obj.title}</td>
-                        <td>{obj.amount}</td>
+                        <td style={obj.type == 'debit' ? {color:'#2ECC71'} : {color:'red'}}>{obj.amount}</td>
                         <td>{obj.nature}</td>
-                        <td>{obj.type == "debit" ? 'debit' : null}</td>
+                        <td style={obj.type == 'debit' ? {color:'#2ECC71'} : {color:'red'}}>{obj.type == "debit" ? 'debit' : null}</td>
                         <td>{obj.type == "credit" ? 'credit' : null}</td>
                         <td>{`${date} ${time}`}</td>
                     </tr>
@@ -33,10 +33,10 @@ const TableContent = ({ debit, credit }) => {
                     <tr key={key}>
                         <td >{key}</td>
                         <td>{obj2.title}</td>
-                        <td>{obj2.amount}</td>
+                        <td style={obj2.type == 'debit' ? {color:'#2ECC71'} : {color:'red'}}>{obj2.amount}</td>
                         <td>{obj2.nature}</td>
                         <td>{obj2.type == "debit" ? 'debit' : null}</td>
-                        <td>{obj2.type == "credit" ? 'credit' : null}</td>
+                        <td style={obj2.type == 'debit' ? {color:'#2ECC71'} : {color:'red'}}>{obj2.type == "credit" ? 'credit' : null}</td>
                         <td>{obj2.date}</td>
                     </tr>
                 )

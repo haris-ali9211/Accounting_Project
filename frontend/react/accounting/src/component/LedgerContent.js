@@ -60,8 +60,8 @@ const LedgerContent = ({ num, pros, name }) => {
                         <tr>
                             <td key={key}>{num}</td>
                             <td>{obj.title}</td>
-                            <td>{obj.type == 'debit' ? obj.amount : null}</td>
-                            <td>{obj.type == 'credit' ? obj.amount : null}</td>
+                            <td style={obj.type == 'debit' ? {color:'#2ECC71'} : {color:'red'}}>{obj.type == 'debit' ? obj.amount : null}</td>
+                            <td style={obj.type == 'debit' ? {color:'#2ECC71'} : {color:'red'}}>{obj.type == 'credit' ? obj.amount : null}</td>
                             <td>{`${date} ${time}`}</td>
 
 
@@ -77,9 +77,8 @@ const LedgerContent = ({ num, pros, name }) => {
 
             <tr style={{ fontSize: 17, marginTop: 4 }}>
                 <td className='backColor'></td>
-                <td></td>
                 <td>Balance</td>
-                <td>{trailBalance}</td>
+                <td colSpan={2}>{trailBalance}</td>
                 <td></td>
             </tr>
         </>

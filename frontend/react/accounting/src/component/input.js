@@ -247,9 +247,11 @@ function AddRecords() {
                     <h2>Records</h2>
                     {
                         recordsDataObj && recordsDataObj.map((obj, key) => {
+                            console.log("🚀 ~ file: input.js ~ line 262 ~ recordsDataObj&&recordsDataObj.map ~ recordsDataObj", recordsDataObj)
                             return (
                                 <>
-                                    <Toast key={key} show={showA} className={obj.type === "debit" ? 'debit Toast' : 'credit Toast'}>
+                                    <Toast key={key} show={showA} style={obj.type == 'debit' ? {backgroundColor:'green'} : {backgroundColor:'red'}} className={obj.type === "debit" ? 'debit Toast' : 'credit Toast'}>
+                                    {/* <Toast key={key} show={showA} className={obj.type === "debit" ? 'debit Toast' : 'credit Toast'}> */}
                                         <Toast.Header>
                                             <strong className="me-auto">{obj.title}</strong>
                                             <small>{obj.category}</small>
