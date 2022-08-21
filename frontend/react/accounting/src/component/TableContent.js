@@ -37,7 +37,7 @@ const TableContent = ({ debit, credit }) => {
                         <td>{obj2.nature}</td>
                         <td>{obj2.type == "debit" ? 'debit' : null}</td>
                         <td>{obj2.type == "credit" ? 'credit' : null}</td>
-                        <td>{`${date} ${time}`}</td>
+                        <td>{obj2.date}</td>
                     </tr>
                 )
             })}

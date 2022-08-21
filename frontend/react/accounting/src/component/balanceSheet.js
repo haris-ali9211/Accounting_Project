@@ -10,6 +10,7 @@ const BalanceSheet =()=>{
 
 
     const [trailBalanceData, setTrailBalanceData] = useState([]);
+    console.log("🚀 ~ file: balanceSheet.js ~ line 13 ~ BalanceSheet ~ trailBalanceData", trailBalanceData)
     const [stopData, setStopData] = useState(false)
     const [titleData, setTitle] = useState()
     const [ledger, setLedger] = useState([])
@@ -97,6 +98,7 @@ const BalanceSheet =()=>{
 
             const filtered = filterPlainArray(arr, filters);
             var title = `${obj}`
+            // var objT = { title: filtered }
             var objT = { title: filtered }
             ledgerData.push(objT)
         })

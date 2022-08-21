@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,16 +8,52 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Toast from 'react-bootstrap/Toast';
 import FirebaseStack from '../firebase/firebasev9';
-import { ref, set } from "firebase/database"
+import { ref, set, get, child } from "firebase/database"
+import { v4 as uuidv4 } from 'uuid';
+
+
+
+var today = new Date();
+var date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+var time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
 
 const objData = {
     title: "",
     amount: "",
     nature: "",
-    type: ""
-
+    type: "",
+    date: `${date} ${time}`
 }
+
 function AddRecords() {
+
+
+
+    const getTrailBalanceCounterLength = async () => {
+        get(child(dbRef, `trailBalance/`)).then((snapshot) => {
+            if (snapshot.exists()) {
+                setTrailBalanceCounter(snapshot.val().length)
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+    const getRecordCounterLength = async () => {
+        get(child(dbRef, `record/`)).then((snapshot) => {
+            if (snapshot.exists()) {
+                setCounter(snapshot.val().length)
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
+
+    
 
     const [validated, setValidated] = useState(false);
     const [recordsDataObj, setRecordsDataObj] = useState([])
@@ -34,6 +70,8 @@ function AddRecords() {
     // console.log("🚀 ~ file: input.js ~ line 35 ~ AddRecords ~ currentData", currentData)
 
     const db = FirebaseStack();
+    const dbRef = ref(FirebaseStack());
+
 
 
     const toggleShowA = () => setShowA(!showA);
@@ -54,6 +92,8 @@ function AddRecords() {
     }
 
     const addRecord = (e) => {
+
+        
         e.preventDefault();
         setRecordsDataObj([...recordsDataObj, data]);
         if (data.type === 'debit') {
@@ -100,7 +140,7 @@ function AddRecords() {
         // data01.push(`${date} ${time}`)
         data01.push(obj)
         data01.push(obj1)
-        set(ref(db, 'record1/' + counter), {
+        set(ref(db, 'record/' + counter), {
             'debit': debitData,
             'credit': creditData
         });
@@ -115,6 +155,14 @@ function AddRecords() {
         }
         setCounter(counter + 1)
     }
+
+    useEffect(() => {
+        getTrailBalanceCounterLength()
+        getRecordCounterLength()
+    }, [])
+    
+    console.log("🚀 ~ file: input.js ~ line 254 ~ AddRecords ~ trailBalanceCounter", trailBalanceCounter)
+
 
     return (
         <Container>
@@ -139,7 +187,9 @@ function AddRecords() {
                                 <option value="liability">Liability</option>
                                 <option value="equity">Equity</option>
                                 <option value="revenue">Revenue</option>
-                            </Form.Select>
+                                <option value="expense">Expense</option>
+                                <option value="drawing">Drawing</option>
+                            </Form.Select> 
 
                             <Form.Select aria-label="Floating label select example" onChange={(e) => { handelData(e) }} name='type'>
                                 <option>Transaction Type</option>

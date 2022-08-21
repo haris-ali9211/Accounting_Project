@@ -1,0 +1,78 @@
+{
+  "record": {
+    "125d2756-0724-4624-bd42-692aa1f55175": {
+      "credit": [
+        {
+          "amount": "",
+          "date": "2022-8-22 0:4:36",
+          "nature": "",
+          "title": "",
+          "type": ""
+        },
+        {
+          "amount": "",
+          "date": "2022-8-22 0:4:36",
+          "nature": "",
+          "title": "",
+          "type": ""
+        }
+      ]
+    },
+    "8d7f6e10-3f3a-470a-a32d-87036d66cd8c": {
+      "credit": [
+        {
+          "amount": "",
+          "date": "2022-8-22 0:4:36",
+          "nature": "",
+          "title": "",
+          "type": ""
+        },
+        {
+          "amount": "",
+          "date": "2022-8-22 0:4:36",
+          "nature": "",
+          "title": "",
+          "type": ""
+        }
+      ]
+    }
+  },
+  "trailBalance": {
+    "1da0e723-b75a-4f28-aa9a-70ec2aac5525": {
+      "data": {
+        "amount": "",
+        "date": "2022-8-22 0:4:36",
+        "nature": "",
+        "title": "",
+        "type": ""
+      }
+    },
+    "24934c84-0064-41d0-bfa9-1d729e3b277e": {
+      "data": {
+        "amount": "",
+        "date": "2022-8-22 0:4:36",
+        "nature": "",
+        "title": "",
+        "type": ""
+      }
+    },
+    "395a70a6-f1e4-4393-b99a-a3e5e1ed879d": {
+      "data": {
+        "amount": "",
+        "date": "2022-8-22 0:4:36",
+        "nature": "",
+        "title": "",
+        "type": ""
+      }
+    },
+    "d06d0911-f0f7-469d-b4dd-9a5820b6ae22": {
+      "data": {
+        "amount": "",
+        "date": "2022-8-22 0:4:36",
+        "nature": "",
+        "title": "",
+        "type": ""
+      }
+    }
+  }
+}

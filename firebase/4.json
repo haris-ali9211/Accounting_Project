@@ -1,0 +1,212 @@
+{
+  "record": {
+    "1d92358f-a3e7-453e-8e98-068fd500f3b8": {
+      "credit": [
+        {
+          "amount": "2000",
+          "date": "2022-8-21 23:12:38",
+          "nature": "asset",
+          "title": "cash",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "2000",
+          "date": "2022-8-21 23:12:38",
+          "nature": "liability",
+          "title": "account payable",
+          "type": "debit"
+        }
+      ]
+    },
+    "2d16b13c-c012-4a65-b782-8f9f5c170dd3": {
+      "credit": [
+        {
+          "amount": "28000",
+          "date": "2022-8-21 23:10:46",
+          "nature": "asset",
+          "title": "cash",
+          "type": "credit"
+        },
+        {
+          "amount": "112000",
+          "date": "2022-8-21 23:10:46",
+          "nature": "liability",
+          "title": "note payable",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "140000",
+          "date": "2022-8-21 23:10:46",
+          "nature": "asset",
+          "title": "land",
+          "type": "debit"
+        }
+      ]
+    },
+    "707754ca-cba7-49a9-bc2d-341bbc5dd53e": {
+      "credit": [
+        {
+          "amount": "3000",
+          "date": "2022-8-21 23:12:38",
+          "nature": "liability",
+          "title": "account payable",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "3000",
+          "date": "2022-8-21 23:12:38",
+          "nature": "asset",
+          "title": "office equipment",
+          "type": "debit"
+        }
+      ]
+    },
+    "8f451c93-8abd-4039-bd88-cc68c4194eb2": {
+      "credit": [
+        {
+          "amount": "45000",
+          "date": "2022-8-21 23:9:26",
+          "nature": "equity",
+          "title": "capital",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "45000",
+          "date": "2022-8-21 23:9:26",
+          "nature": "asset",
+          "title": "cash",
+          "type": "debit"
+        }
+      ]
+    },
+    "c1fcead9-ee27-4996-b377-aae8cc5c064b": {
+      "credit": [
+        {
+          "amount": "4000",
+          "date": "2022-8-21 23:12:38",
+          "nature": "asset",
+          "title": "cash",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "4000",
+          "date": "2022-8-21 23:12:38",
+          "nature": "asset",
+          "title": "building",
+          "type": "debit"
+        }
+      ]
+    }
+  },
+  "trailBalance": {
+    "0090886f-30b4-4bdc-8bc0-353db0ffd5c4": {
+      "data": {
+        "amount": "140000",
+        "date": "2022-8-21 23:10:46",
+        "nature": "asset",
+        "title": "land",
+        "type": "debit"
+      }
+    },
+    "02648fcf-fe4c-4ea3-9acd-8895f64ac12c": {
+      "data": {
+        "amount": "2000",
+        "date": "2022-8-21 23:12:38",
+        "nature": "asset",
+        "title": "cash",
+        "type": "credit"
+      }
+    },
+    "41fd1346-1456-4fff-aae7-82957f33ceed": {
+      "data": {
+        "amount": "3000",
+        "date": "2022-8-21 23:12:38",
+        "nature": "asset",
+        "title": "office equipment",
+        "type": "debit"
+      }
+    },
+    "4203845f-26a0-466f-b936-e2cfe6d2ad60": {
+      "data": {
+        "amount": "112000",
+        "date": "2022-8-21 23:10:46",
+        "nature": "liability",
+        "title": "note payable",
+        "type": "credit"
+      }
+    },
+    "47d2384b-c855-45c9-a3f7-4d950d28f957": {
+      "data": {
+        "amount": "3000",
+        "date": "2022-8-21 23:12:38",
+        "nature": "liability",
+        "title": "account payable",
+        "type": "credit"
+      }
+    },
+    "48e4fe1d-1aa0-4c20-9f69-5a192a2bcdff": {
+      "data": {
+        "amount": "2000",
+        "date": "2022-8-21 23:12:38",
+        "nature": "liability",
+        "title": "account payable",
+        "type": "debit"
+      }
+    },
+    "645448ec-9e12-4bb4-a4e1-ae3071172943": {
+      "data": {
+        "amount": "45000",
+        "date": "2022-8-21 23:9:26",
+        "nature": "equity",
+        "title": "capital",
+        "type": "credit"
+      }
+    },
+    "6bf0bbd5-04be-4cc7-a48f-466961ac4522": {
+      "data": {
+        "amount": "45000",
+        "date": "2022-8-21 23:9:26",
+        "nature": "asset",
+        "title": "cash",
+        "type": "debit"
+      }
+    },
+    "ca2319e1-ebf6-406b-93fa-249f82e25196": {
+      "data": {
+        "amount": "28000",
+        "date": "2022-8-21 23:10:46",
+        "nature": "asset",
+        "title": "cash",
+        "type": "credit"
+      }
+    },
+    "e2f43ea9-b9c9-48e6-a8ac-13f11e5888d6": {
+      "data": {
+        "amount": "4000",
+        "date": "2022-8-21 23:12:38",
+        "nature": "asset",
+        "title": "building",
+        "type": "debit"
+      }
+    },
+    "f62a36e6-07bd-4245-b7da-28a3cb23a3c6": {
+      "data": {
+        "amount": "4000",
+        "date": "2022-8-21 23:12:38",
+        "nature": "asset",
+        "title": "cash",
+        "type": "credit"
+      }
+    }
+  }
+}
