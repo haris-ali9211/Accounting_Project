@@ -206,7 +206,7 @@ const IncomeStatement = () => {
 
     return (
         <>
-            <h1 style={{ color: 'black' }}>Income statement</h1>
+            <h1 style={{ color: 'black' }}>Expense</h1>
             <Table striped bordered hover variant="dark">
 
                 <thead>
@@ -220,7 +220,7 @@ const IncomeStatement = () => {
                 </thead>
                 <tbody>
 
-                    <h4 style={{ color: 'black' }}>expense</h4>
+                    <h4 style={{ color: 'black' }}></h4>
 
                     {expense && expense.map((obj, key) => {
                         return (
@@ -233,6 +233,8 @@ const IncomeStatement = () => {
                             </tr>
                         )
                     })}
+                    <h4 style={{ color: 'black' }}></h4>
+
                     <tr style={{ fontSize: 17, marginTop: 4 }}>
                         <td className='backColor'></td>
                         <td>Balance</td>
@@ -241,7 +243,28 @@ const IncomeStatement = () => {
                     </tr>
 
 
-                    <h4 style={{ color: 'black' }}>revenue</h4>
+
+                </tbody>
+            </Table>
+            <h1 style={{ color: 'black' }}>Revenue</h1>
+
+            <Table striped bordered hover variant="dark">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Account Name</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+
+
+                <h4 style={{ color: 'black' }}></h4>
 
                     {revenue && revenue.map((obj, key) => {
                         return (
@@ -261,11 +284,14 @@ const IncomeStatement = () => {
                         <td></td>
                     </tr>
 
+                    <h4 style={{ color: 'black' }}></h4>
 
                     <tr style={{ fontSize: 17, marginTop: 4 }}>
                         <td colSpan={2}>NetIncome</td>
                         <td colSpan={3}>{incomeBalance}</td>
                     </tr>
+
+
 
                 </tbody>
             </Table>
