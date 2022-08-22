@@ -17,6 +17,12 @@ const IncomeStatement = () => {
     const [revenue, setRevenue] = useState([])
     const [expense, setExpense] = useState([])
 
+    const [assets, setAssets] = useState([])
+    const [liability, setLiability] = useState([])
+
+    const [liabilityFinalBalance, setLiabilityFinalBalance] = useState()
+    const [assetBalanceFinal, setAssetBalanceFinal] = useState()
+
     const [incomeBalance, setIncomeBalance] = useState()
 
     const [capital, setCapital] = useState()
@@ -26,6 +32,10 @@ const IncomeStatement = () => {
     const [drawingBalance, setDrawingBalance] = useState()
 
     const [endingCapital, setEndingCapital] = useState()
+
+    const [expenseBalance, setExpenseBalance] = useState()
+    const [revenueBalance, setRevenueBalance] = useState()
+
 
 
 
@@ -129,6 +139,14 @@ const IncomeStatement = () => {
         })
         setLedgerDataState(ledgerData)
 
+        //! check this //! /// ////////////////////////////////////////////////
+        const dummyFilter = {
+            nature: ['asset'],
+        }
+        const dummyData = filterPlainArray(arr, dummyFilter);
+        console.log("🚀 ~ r ~ dummyData", dummyData)
+
+        //! /// ///////////////////////////////////////////////////////////////
 
         //! expense ////
         const getExpense = {
@@ -160,21 +178,44 @@ const IncomeStatement = () => {
         }
         const getDrawingObj = filterPlainArray(arr, getDrawing);
         setDrawing(getDrawingObj)
+
+
+        //! liability ////
+        const getLiability = {
+            nature: ['liability'],
+        }
+        const getLiabilityObj = filterPlainArray(arr, getLiability);
+        setLiability(getLiabilityObj)
+
+
+        //! assets ////
+        const getAssets = {
+            nature: ['asset'],
+        }
+        const getAssetsObj = filterPlainArray(arr, getAssets);
+        setAssets(getAssetsObj)
+
     }
 
     const getNetIncome = () => {
         var incomeBalanceInFunction = 0
 
         //! revenue ////
+        var revBalance = 0
         revenue && revenue.map((obj => {
             incomeBalanceInFunction = incomeBalanceInFunction + parseInt(obj.amount)
+            revBalance = revBalance + parseInt(obj.amount)
         }))
-
+        setRevenueBalance(revBalance)
 
         //! expense ////
+        var expBalance = 0
         expense && expense.map((obj => {
             incomeBalanceInFunction = incomeBalanceInFunction - parseInt(obj.amount)
+            expBalance = expBalance + parseInt(obj.amount)
+
         }))
+        setExpenseBalance(expBalance)
         setIncomeBalance(incomeBalanceInFunction)
 
 
@@ -194,6 +235,22 @@ const IncomeStatement = () => {
         setCapitalBalance(capitalBalance)
 
 
+        //! assets ////
+        var assetsBalance = 0
+        assets && assets.map((obj) => {
+            assetsBalance = assetsBalance + parseInt(obj.amount)
+        })
+        setAssetBalanceFinal(assetsBalance)
+
+
+        //! liability ////
+        var liabilityBalance = 0
+        liability && liability.map((obj) => {
+            liabilityBalance = liabilityBalance + parseInt(obj.amount)
+        })
+        setLiabilityFinalBalance(liabilityBalance)
+
+
         const endingCapitalInFunctionHalf = capitalBalance - drawingBalance
         const endingCapitalInFunctionFull = Math.sign(incomeBalance) == 1 ? endingCapitalInFunctionHalf + incomeBalance : endingCapitalInFunctionHalf - incomeBalance
         setEndingCapital(endingCapitalInFunctionFull)
@@ -206,7 +263,10 @@ const IncomeStatement = () => {
 
     return (
         <>
-            <h1 style={{ color: 'black' }}>Expense</h1>
+
+            <h3 style={{ color: 'black', fontWeight: 'bold' }}>Income Statement</h3>
+
+            <h3 style={{ color: 'black' }}>Expense</h3>
             <Table striped bordered hover variant="dark">
 
                 <thead>
@@ -238,7 +298,7 @@ const IncomeStatement = () => {
                     <tr style={{ fontSize: 17, marginTop: 4 }}>
                         <td className='backColor'></td>
                         <td>Balance</td>
-                        <td colSpan={2}>total</td>
+                        <td colSpan={2}>{expenseBalance}</td>
                         <td></td>
                     </tr>
 
@@ -246,7 +306,7 @@ const IncomeStatement = () => {
 
                 </tbody>
             </Table>
-            <h1 style={{ color: 'black' }}>Revenue</h1>
+            <h3 style={{ color: 'black' }}>Revenue</h3>
 
             <Table striped bordered hover variant="dark">
 
@@ -262,9 +322,7 @@ const IncomeStatement = () => {
                 <tbody>
 
 
-
-
-                <h4 style={{ color: 'black' }}></h4>
+                    <h4 style={{ color: 'black' }}></h4>
 
                     {revenue && revenue.map((obj, key) => {
                         return (
@@ -277,25 +335,123 @@ const IncomeStatement = () => {
                             </tr>
                         )
                     })}
+                    <h4 style={{ color: 'black' }}></h4>
+
                     <tr style={{ fontSize: 17, marginTop: 4 }}>
                         <td className='backColor'></td>
                         <td>Balance</td>
-                        <td colSpan={2}>total</td>
+                        <td colSpan={2}>{revenueBalance}</td>
                         <td></td>
+                    </tr>
+
+                    <h3 style={{ color: 'white' }}>NetIncome</h3>
+
+                    <tr style={{ fontSize: 17, marginTop: 4 }}>
+                        <td colSpan={2}>NetIncome</td>
+                        <td colSpan={3}>{`${revenueBalance} - ${expenseBalance} = ${incomeBalance}`}</td>
+                    </tr>
+                </tbody>
+            </Table>
+
+            <h3 style={{ color: 'black', fontWeight: 'bold' }}>Statement of Owner Equity</h3>
+
+            <Table striped bordered hover variant="dark">
+
+
+                <tbody>
+                    <tr>
+                        <td colSpan={2}>Starting Capital</td>
+                        <td colSpan={3}>{capitalBalance}</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={2}>NetIncome</td>
+                        <td colSpan={3}>{incomeBalance}</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={2}>Drawing</td>
+                        <td colSpan={3}>{drawingBalance}</td>
                     </tr>
 
                     <h4 style={{ color: 'black' }}></h4>
 
-                    <tr style={{ fontSize: 17, marginTop: 4 }}>
-                        <td colSpan={2}>NetIncome</td>
-                        <td colSpan={3}>{incomeBalance}</td>
+                    <tr>
+                        <td colSpan={2}>Ending Capital</td>
+                        <td colSpan={3}>{endingCapital}</td>
                     </tr>
-
-
 
                 </tbody>
             </Table>
 
+            <h3 style={{ color: 'black', fontWeight: 'bold' }}>Balance Sheet</h3>
+            <h3 style={{ color: 'black' }}>Assets</h3>
+
+            <Table striped bordered hover variant="dark">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Account Name</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {assets && assets.map((obj, key) => {
+                        return (
+                            <tr>
+                                <td>{key}</td>
+                                <td>{obj.title}</td>
+                                <td style={obj.type == 'debit' ? { color: '#2ECC71' } : { color: 'red' }}>{obj.type == 'debit' ? obj.amount : null}</td>
+                                <td style={obj.type == 'debit' ? { color: '#2ECC71' } : { color: 'red' }}>{obj.type == 'credit' ? obj.amount : null}</td>
+                                <td>{obj.date}</td>
+                            </tr>
+                        )
+                    })}
+
+                    <h4 style={{ color: 'black' }}></h4>
+
+                    <tr style={{ fontSize: 17, marginTop: 4 }}>
+                        <td className='backColor'></td>
+                        <td>Balance</td>
+                        <td colSpan={2}>{revenueBalance}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </Table>
+
+            <h3 style={{ color: 'black' }}>Liability</h3>
+
+
+            <Table striped bordered hover variant="dark">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Account Name</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                {liability && liability.map((obj, key) => {
+                        return (
+                            <tr>
+                                <td>{key}</td>
+                                <td>{obj.title}</td>
+                                <td style={obj.type == 'debit' ? { color: '#2ECC71' } : { color: 'red' }}>{obj.type == 'debit' ? obj.amount : null}</td>
+                                <td style={obj.type == 'debit' ? { color: '#2ECC71' } : { color: 'red' }}>{obj.type == 'credit' ? obj.amount : null}</td>
+                                <td>{obj.date}</td>
+                            </tr>
+                        )
+                    })}
+            </tbody>
+        </Table>
         </>
     )
 }

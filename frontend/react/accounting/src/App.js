@@ -20,8 +20,8 @@ function App() {
           <Route path="/" element={<Input />} />
           <Route path="/table" element={<Table />} />
           <Route path="/trialBalance" element={<TrialBalance />} />
-          <Route path="/balanceSheet" element={<BalanceSheet />} />
           <Route path="/incomeStatement" element={<IncomeStatement />} />
+          <Route path="/balanceSheet" element={<BalanceSheet />} />
         </Routes>
       </BrowserRouter>
     </>
