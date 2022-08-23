@@ -26,6 +26,8 @@ const IncomeStatement = () => {
     const [assetData, setAssetData] = useState([])
     const [assetTitle, setAssetTitle] = useState([])
 
+    const [assetFinalBalance, setAssetFinalBalance] = useState([])
+    const [assetTotal, setAssetTotal] = useState()
 
     const [incomeBalance, setIncomeBalance] = useState()
 
@@ -156,37 +158,52 @@ const IncomeStatement = () => {
         const assetData = filterPlainArray(arr, assetFilter);
         setAssetData(assetData)
 
-        var assetsTitle=[]
+        var assetsTitle = []
         assetData && assetData.map((obj) => {
             assetsTitle.push(obj.title)
-            
+
         })
         let uniqueAssets = [...new Set(assetsTitle)]
-        setAssetTitle(uniqueAssets)        
+        setAssetTitle(uniqueAssets)
 
-        var arrUnique=[]
-        uniqueAssets && uniqueAssets.map((obj)=>{
+        var arrUnique = []
+
+        uniqueAssets && uniqueAssets.map((obj) => {
             assetData && assetData.map((obj1) => {
-                if(obj == obj1.title){
-                    arrUnique.push(obj1) 
+                if (obj == obj1.title) {
+                    arrUnique.push(obj1)
                 }
-            	
+
             })
         })
 
-        var arrBalanceAssets=[]
+        var arrBalanceAssets = []
         var assetBalanceInFunction = 0
-        uniqueAssets && uniqueAssets.map((obj)=>{
-            arrUnique && arrUnique.map((object)=>{
-                if(obj === object.title){
-                    console.log("🚀 ~ &arrUnique.map ~ obj === object.title", object.amount , isNaN(object.amount))
+        uniqueAssets && uniqueAssets.map((obj) => {
+            arrUnique && arrUnique.map((object) => {
+                if (obj === object.title) {
                     assetBalanceInFunction = object.type == 'credit' ? assetBalanceInFunction - parseInt(object.amount) : assetBalanceInFunction + parseInt(object.amount)
                 }
             })
             arrBalanceAssets.push(assetBalanceInFunction)
             assetBalanceInFunction = 0
         })
-        console.log("🚀 ~ file: IncomeStatement.js ~ line 178 ~ filter ~ arrBalanceAssets", arrBalanceAssets)
+
+        const obj = {};
+
+        uniqueAssets.forEach((element, index) => {
+            obj[element] = arrBalanceAssets[index];
+        });
+
+        setAssetFinalBalance(Object.entries(obj))
+
+        var assetsTotal = 0
+        Object.entries(obj) && Object.entries(obj).map((obj) => {
+            assetsTotal = Math.sign(obj[1]) == 1 ? assetsTotal + parseInt(obj[1]) : assetsTotal - parseInt(obj[1])           
+        })
+
+        setAssetTotal(assetsTotal)
+        
         //! /// ///////////////////////////////////////////////////////////////
 
         //! expense ////
@@ -434,31 +451,31 @@ const IncomeStatement = () => {
                         <th>Account Name</th>
                         <th>Debit</th>
                         <th>Credit</th>
-                        <th>Date</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
-                    {assets && assets.map((obj, key) => {
-                        return (
-                            <tr>
-                                <td>{key}</td>
-                                <td>{obj.title}</td>
-                                <td style={obj.type == 'debit' ? { color: '#2ECC71' } : { color: 'red' }}>{obj.type == 'debit' ? obj.amount : null}</td>
-                                <td style={obj.type == 'debit' ? { color: '#2ECC71' } : { color: 'red' }}>{obj.type == 'credit' ? obj.amount : null}</td>
-                                <td>{obj.date}</td>
-                            </tr>
-                        )
-                    })}
+                    {
+                        assetFinalBalance && assetFinalBalance.map((obj,key) => {
+                            return (
+
+                                <tr>
+                                    <td>{key}</td>
+                                    <td>{obj[0]}</td>
+                                    <td>{Math.sign(obj[1]) == 1 ? obj[1]: null}</td>
+                                    <td>{Math.sign(obj[1]) == -1 ? obj[1]: null}</td>
+                                </tr>
+                            )
+                        })
+                    }
 
                     <h4 style={{ color: 'black' }}></h4>
 
                     <tr style={{ fontSize: 17, marginTop: 4 }}>
-                        <td className='backColor'></td>
-                        <td>Balance</td>
-                        <td colSpan={2}>{revenueBalance}</td>
                         <td></td>
+                        <td>Balance</td>
+                        <td colSpan={2}>{assetTotal}</td>
                     </tr>
                 </tbody>
             </Table>
