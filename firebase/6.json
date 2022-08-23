@@ -1,0 +1,364 @@
+{
+  "record": [
+    {
+      "credit": [
+        {
+          "amount": "28000",
+          "date": "2022-8-22 1:45:19",
+          "nature": "asset",
+          "title": "cash",
+          "type": "credit"
+        },
+        {
+          "amount": "112000",
+          "date": "2022-8-22 1:45:19",
+          "nature": "liability",
+          "title": "note payable",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "140000",
+          "date": "2022-8-22 1:45:19",
+          "nature": "asset",
+          "title": "land",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "4000",
+          "date": "2022-8-22 1:46:25",
+          "nature": "asset",
+          "title": "cash",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "4000",
+          "date": "2022-8-22 1:46:25",
+          "nature": "asset",
+          "title": "building",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "45000",
+          "date": "2022-8-22 1:47:47",
+          "nature": "equity",
+          "title": "capital",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "45000",
+          "date": "2022-8-22 1:47:47",
+          "nature": "asset",
+          "title": "cash",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "3000",
+          "date": "2022-8-22 1:48:37",
+          "nature": "liability",
+          "title": "account payable",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "3000",
+          "date": "2022-8-22 1:48:37",
+          "nature": "asset",
+          "title": "office equipment",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "2000",
+          "date": "2022-8-22 1:48:37",
+          "nature": "asset",
+          "title": "cash",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "2000",
+          "date": "2022-8-22 1:48:37",
+          "nature": "liability",
+          "title": "account payable",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "15000",
+          "date": "2022-8-22 1:51:57",
+          "nature": "asset",
+          "title": "cash",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "15000",
+          "date": "2022-8-22 1:51:57",
+          "nature": "drawing",
+          "title": "drawing",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "25000",
+          "date": "2022-8-22 1:54:45",
+          "nature": "revenue",
+          "title": "sales",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "25000",
+          "date": "2022-8-22 1:54:45",
+          "nature": "asset",
+          "title": "cash",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "4000",
+          "date": "2022-8-22 1:57:6",
+          "nature": "liability",
+          "title": "rent payable",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "4000",
+          "date": "2022-8-22 1:57:6",
+          "nature": "expense",
+          "title": "rent expense",
+          "type": "debit"
+        }
+      ]
+    },
+    {
+      "credit": [
+        {
+          "amount": "3000",
+          "date": "2022-8-22 1:57:6",
+          "nature": "liability",
+          "title": "salary payable",
+          "type": "credit"
+        }
+      ],
+      "debit": [
+        {
+          "amount": "3000",
+          "date": "2022-8-22 1:57:6",
+          "nature": "expense",
+          "title": "salary expense",
+          "type": "debit"
+        }
+      ]
+    }
+  ],
+  "trailBalance": [
+    {
+      "data": {
+        "amount": "140000",
+        "date": "2022-8-22 1:45:19",
+        "nature": "asset",
+        "title": "land",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "28000",
+        "date": "2022-8-22 1:45:19",
+        "nature": "asset",
+        "title": "cash",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "112000",
+        "date": "2022-8-22 1:45:19",
+        "nature": "liability",
+        "title": "note payable",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "4000",
+        "date": "2022-8-22 1:46:25",
+        "nature": "asset",
+        "title": "building",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "4000",
+        "date": "2022-8-22 1:46:25",
+        "nature": "asset",
+        "title": "cash",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "45000",
+        "date": "2022-8-22 1:47:47",
+        "nature": "asset",
+        "title": "cash",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "45000",
+        "date": "2022-8-22 1:47:47",
+        "nature": "equity",
+        "title": "capital",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "3000",
+        "date": "2022-8-22 1:48:37",
+        "nature": "asset",
+        "title": "office equipment",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "3000",
+        "date": "2022-8-22 1:48:37",
+        "nature": "liability",
+        "title": "account payable",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "2000",
+        "date": "2022-8-22 1:48:37",
+        "nature": "liability",
+        "title": "account payable",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "2000",
+        "date": "2022-8-22 1:48:37",
+        "nature": "asset",
+        "title": "cash",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "15000",
+        "date": "2022-8-22 1:51:57",
+        "nature": "drawing",
+        "title": "drawing",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "15000",
+        "date": "2022-8-22 1:51:57",
+        "nature": "asset",
+        "title": "cash",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "25000",
+        "date": "2022-8-22 1:54:45",
+        "nature": "asset",
+        "title": "cash",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "25000",
+        "date": "2022-8-22 1:54:45",
+        "nature": "revenue",
+        "title": "sales",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "4000",
+        "date": "2022-8-22 1:57:6",
+        "nature": "expense",
+        "title": "rent expense",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "4000",
+        "date": "2022-8-22 1:57:6",
+        "nature": "liability",
+        "title": "rent payable",
+        "type": "credit"
+      }
+    },
+    {
+      "data": {
+        "amount": "3000",
+        "date": "2022-8-22 1:57:6",
+        "nature": "expense",
+        "title": "salary expense",
+        "type": "debit"
+      }
+    },
+    {
+      "data": {
+        "amount": "3000",
+        "date": "2022-8-22 1:57:6",
+        "nature": "liability",
+        "title": "salary payable",
+        "type": "credit"
+      }
+    }
+  ]
+}

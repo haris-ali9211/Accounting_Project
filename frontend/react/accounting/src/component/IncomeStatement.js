@@ -175,13 +175,12 @@ const IncomeStatement = () => {
         })
 
         var arrBalanceAssets=[]
-        var assetBalanceInFunction
+        var assetBalanceInFunction = 0
         uniqueAssets && uniqueAssets.map((obj)=>{
             arrUnique && arrUnique.map((object)=>{
-                if(obj == object.title){
-                    var price = parseInt(object.amount)
-                    console.log("🚀 ~ file: Income object.title", obj, object.title, object.type == 'debit' ? assetBalanceInFunction + price : assetBalanceInFunction - price)
-                    assetBalanceInFunction = object.type == 'debit' ? assetBalanceInFunction + price : assetBalanceInFunction - price
+                if(obj === object.title){
+                    console.log("🚀 ~ &arrUnique.map ~ obj === object.title", object.amount , isNaN(object.amount))
+                    assetBalanceInFunction = object.type == 'credit' ? assetBalanceInFunction - parseInt(object.amount) : assetBalanceInFunction + parseInt(object.amount)
                 }
             })
             arrBalanceAssets.push(assetBalanceInFunction)
