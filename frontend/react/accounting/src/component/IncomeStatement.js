@@ -179,8 +179,9 @@ const IncomeStatement = () => {
         uniqueAssets && uniqueAssets.map((obj)=>{
             arrUnique && arrUnique.map((object)=>{
                 if(obj == object.title){
-                    console.log("🚀 ~ file: IncomeStatement.js  ~ obj == object.title", obj, object.amount,object.title)
-                    assetBalanceInFunction = object.type == 'debit' ? assetBalanceInFunction + parseInt(object.amount) : assetBalanceInFunction - parseInt(object.amount) 
+                    var price = parseInt(object.amount)
+                    console.log("🚀 ~ file: Income object.title", obj, object.title, object.type == 'debit' ? assetBalanceInFunction + price : assetBalanceInFunction - price)
+                    assetBalanceInFunction = object.type == 'debit' ? assetBalanceInFunction + price : assetBalanceInFunction - price
                 }
             })
             arrBalanceAssets.push(assetBalanceInFunction)
