@@ -23,6 +23,10 @@ const IncomeStatement = () => {
     const [liabilityFinalBalance, setLiabilityFinalBalance] = useState()
     const [assetBalanceFinal, setAssetBalanceFinal] = useState()
 
+    const [assetData, setAssetData] = useState([])
+    const [assetTitle, setAssetTitle] = useState([])
+
+
     const [incomeBalance, setIncomeBalance] = useState()
 
     const [capital, setCapital] = useState()
@@ -52,6 +56,12 @@ const IncomeStatement = () => {
     useEffect(() => {
         filter()
     }, [ledger])
+
+
+
+    // useEffect(()=>{
+    //     filter()
+    // },[assetData])
 
     useEffect(() => {
         getData()
@@ -140,12 +150,43 @@ const IncomeStatement = () => {
         setLedgerDataState(ledgerData)
 
         //! check this //! /// ////////////////////////////////////////////////
-        const dummyFilter = {
+        const assetFilter = {
             nature: ['asset'],
         }
-        const dummyData = filterPlainArray(arr, dummyFilter);
-        console.log("🚀 ~ r ~ dummyData", dummyData)
+        const assetData = filterPlainArray(arr, assetFilter);
+        setAssetData(assetData)
 
+        var assetsTitle=[]
+        assetData && assetData.map((obj) => {
+            assetsTitle.push(obj.title)
+            
+        })
+        let uniqueAssets = [...new Set(assetsTitle)]
+        setAssetTitle(uniqueAssets)        
+
+        var arrUnique=[]
+        uniqueAssets && uniqueAssets.map((obj)=>{
+            assetData && assetData.map((obj1) => {
+                if(obj == obj1.title){
+                    arrUnique.push(obj1) 
+                }
+            	
+            })
+        })
+
+        var arrBalanceAssets=[]
+        var assetBalanceInFunction
+        uniqueAssets && uniqueAssets.map((obj)=>{
+            arrUnique && arrUnique.map((object)=>{
+                if(obj == object.title){
+                    console.log("🚀 ~ file: IncomeStatement.js  ~ obj == object.title", obj, object.amount,object.title)
+                    assetBalanceInFunction = object.type == 'debit' ? assetBalanceInFunction + parseInt(object.amount) : assetBalanceInFunction - parseInt(object.amount) 
+                }
+            })
+            arrBalanceAssets.push(assetBalanceInFunction)
+            assetBalanceInFunction = 0
+        })
+        console.log("🚀 ~ file: IncomeStatement.js ~ line 178 ~ filter ~ arrBalanceAssets", arrBalanceAssets)
         //! /// ///////////////////////////////////////////////////////////////
 
         //! expense ////
@@ -439,7 +480,7 @@ const IncomeStatement = () => {
 
                 <tbody>
 
-                {liability && liability.map((obj, key) => {
+                    {liability && liability.map((obj, key) => {
                         return (
                             <tr>
                                 <td>{key}</td>
@@ -450,8 +491,8 @@ const IncomeStatement = () => {
                             </tr>
                         )
                     })}
-            </tbody>
-        </Table>
+                </tbody>
+            </Table>
         </>
     )
 }
