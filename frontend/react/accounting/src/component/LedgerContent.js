@@ -77,7 +77,7 @@ const LedgerContent = ({ num, pros, name }) => {
 
             <tr style={{ fontSize: 17, marginTop: 4 }}>
                 <td className='backColor'></td>
-                <td>Balance</td>
+                <td>trialBalance</td>
                 <td colSpan={2}>{trailBalance}</td>
                 <td></td>
             </tr>

@@ -29,6 +29,9 @@ const IncomeStatement = () => {
     const [assetFinalBalance, setAssetFinalBalance] = useState([])
     const [assetTotal, setAssetTotal] = useState()
 
+    const [liabilityFinalBalanceWithData, setLiabilityFinalBalanceWithData] = useState([])
+    const [liabilityTotal, setLiabilityTotal] = useState()
+
     const [incomeBalance, setIncomeBalance] = useState()
 
     const [capital, setCapital] = useState()
@@ -38,6 +41,7 @@ const IncomeStatement = () => {
     const [drawingBalance, setDrawingBalance] = useState()
 
     const [endingCapital, setEndingCapital] = useState()
+    console.log("🚀 ~ file: IncomeStatement.js ~ line 44 ~ IncomeStatement ~ endingCapital", endingCapital)
 
     const [expenseBalance, setExpenseBalance] = useState()
     const [revenueBalance, setRevenueBalance] = useState()
@@ -151,7 +155,7 @@ const IncomeStatement = () => {
         })
         setLedgerDataState(ledgerData)
 
-        //! check this //! /// ////////////////////////////////////////////////
+        //! assets //! /// ////////////////////////////////////////////////
         const assetFilter = {
             nature: ['asset'],
         }
@@ -199,12 +203,72 @@ const IncomeStatement = () => {
 
         var assetsTotal = 0
         Object.entries(obj) && Object.entries(obj).map((obj) => {
-            assetsTotal = Math.sign(obj[1]) == 1 ? assetsTotal + parseInt(obj[1]) : assetsTotal - parseInt(obj[1])           
+            assetsTotal = Math.sign(obj[1]) == 1 ? assetsTotal + parseInt(obj[1]) : assetsTotal - parseInt(obj[1])
         })
 
         setAssetTotal(assetsTotal)
-        
+
+
+        //! liability //! /// ////////////////////////////////////////////////
+
+        const liabilityFilter = {
+            nature: ['liability'],
+        }
+
+        const liabilityData = filterPlainArray(arr, liabilityFilter);
+
+        var liabilityTitle = []
+        liabilityData && liabilityData.map((obj) => {
+            liabilityTitle.push(obj.title)
+
+        })
+        let uniqueLiability = [...new Set(liabilityTitle)]
+
+        var arrLiabilityUnique = []
+        uniqueLiability && uniqueLiability.map((obj) => {
+            liabilityData && liabilityData.map((obj1) => {
+                if (obj == obj1.title) {
+                    arrLiabilityUnique.push(obj1)
+                }
+
+            })
+        })
+
+
+        var arrBalanceLiability = []
+        var liabilityBalanceInFunction = 0
+        uniqueLiability && uniqueLiability.map((obj) => {
+            arrLiabilityUnique && arrLiabilityUnique.map((object) => {
+                if (obj === object.title) {
+                    liabilityBalanceInFunction = object.type == 'credit' ? liabilityBalanceInFunction - parseInt(object.amount) : liabilityBalanceInFunction + parseInt(object.amount)
+                }
+            })
+            arrBalanceLiability.push(liabilityBalanceInFunction)
+            liabilityBalanceInFunction = 0
+        })
+
+
+        const objLiability = {};
+
+        uniqueLiability.forEach((element, index) => {
+            objLiability[element] = arrBalanceLiability[index];
+        });
+
+        setLiabilityFinalBalanceWithData(Object.entries(objLiability))
+
+        var liabilityTotal = 0
+        Object.entries(objLiability) && Object.entries(objLiability).map((obj) => {
+            liabilityTotal = Math.sign(obj[1]) == 1 ? liabilityTotal + parseInt(obj[1]) : liabilityTotal - parseInt(obj[1])
+        })
+
+
+        setLiabilityTotal(liabilityTotal)
         //! /// ///////////////////////////////////////////////////////////////
+
+
+
+
+
 
         //! expense ////
         const getExpense = {
@@ -247,11 +311,11 @@ const IncomeStatement = () => {
 
 
         //! assets ////
-        const getAssets = {
-            nature: ['asset'],
-        }
-        const getAssetsObj = filterPlainArray(arr, getAssets);
-        setAssets(getAssetsObj)
+        // const getAssets = {
+        //     nature: ['asset'],
+        // }
+        // const getAssetsObj = filterPlainArray(arr, getAssets);
+        // setAssets(getAssetsObj)
 
     }
 
@@ -457,14 +521,14 @@ const IncomeStatement = () => {
                 <tbody>
 
                     {
-                        assetFinalBalance && assetFinalBalance.map((obj,key) => {
+                        assetFinalBalance && assetFinalBalance.map((obj, key) => {
                             return (
 
                                 <tr>
                                     <td>{key}</td>
                                     <td>{obj[0]}</td>
-                                    <td>{Math.sign(obj[1]) == 1 ? obj[1]: null}</td>
-                                    <td>{Math.sign(obj[1]) == -1 ? obj[1]: null}</td>
+                                    <td style={Math.sign(obj[1]) == 1 ? { color: '#2ECC71' } : { color: 'red' }} >{Math.sign(obj[1]) == 1 ? obj[1] : null}</td>
+                                    <td style={Math.sign(obj[1]) == 1 ? { color: '#2ECC71' } : { color: 'red' }} >{Math.sign(obj[1]) == -1 ? obj[1] : null}</td>
                                 </tr>
                             )
                         })
@@ -491,25 +555,43 @@ const IncomeStatement = () => {
                         <th>Account Name</th>
                         <th>Debit</th>
                         <th>Credit</th>
-                        <th>Date</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
-                    {liability && liability.map((obj, key) => {
-                        return (
-                            <tr>
-                                <td>{key}</td>
-                                <td>{obj.title}</td>
-                                <td style={obj.type == 'debit' ? { color: '#2ECC71' } : { color: 'red' }}>{obj.type == 'debit' ? obj.amount : null}</td>
-                                <td style={obj.type == 'debit' ? { color: '#2ECC71' } : { color: 'red' }}>{obj.type == 'credit' ? obj.amount : null}</td>
-                                <td>{obj.date}</td>
-                            </tr>
-                        )
-                    })}
+                    {
+                        liabilityFinalBalanceWithData && liabilityFinalBalanceWithData.map((obj, key) => {
+                            return (
+
+                                <tr>
+                                    <td>{key}</td>
+                                    <td>{obj[0]}</td>
+                                    <td style={Math.sign(obj[1]) == 1 ? { color: '#2ECC71' } : { color: 'red' }} >{Math.sign(obj[1]) == 1 ? obj[1] * -1 : null}</td>
+                                    <td style={Math.sign(obj[1]) == 1 ? { color: '#2ECC71' } : { color: 'red' }} >{Math.sign(obj[1]) == -1 ? obj[1] * -1 : null}</td>
+                                </tr>
+                            )
+                        })
+                    }
+                    <tr>
+                        <td>1</td>
+                        <td>Capital</td>
+                        <td></td>
+                        <td style={{ color: 'red' }}>{endingCapital}</td>
+                    </tr>
+
+                    <h4 style={{ color: 'black' }}></h4>
+
+                    <tr style={{ fontSize: 17, marginTop: 4 }}>
+                        <td></td>
+                        <td>Balance</td>
+                        <td colSpan={2}>{liabilityTotal + endingCapital}</td>
+                    </tr>
                 </tbody>
             </Table>
+
+
+           {liabilityTotal + endingCapital == assetTotal ?  <h1 style={{color: '#2ECC71'}}>BALANCED</h1> :  <h1 style={{color: 'red'}}>NOT BALANCED</h1>}
         </>
     )
 }
