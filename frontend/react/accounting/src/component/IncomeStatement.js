@@ -41,7 +41,6 @@ const IncomeStatement = () => {
     const [drawingBalance, setDrawingBalance] = useState()
 
     const [endingCapital, setEndingCapital] = useState()
-    console.log("🚀 ~ file: IncomeStatement.js ~ line 44 ~ IncomeStatement ~ endingCapital", endingCapital)
 
     const [expenseBalance, setExpenseBalance] = useState()
     const [revenueBalance, setRevenueBalance] = useState()
@@ -62,6 +61,10 @@ const IncomeStatement = () => {
     useEffect(() => {
         filter()
     }, [ledger])
+
+    useEffect(()=>{
+        getIncome()
+    },[capitalBalance,drawingBalance, incomeBalance])
 
 
 
@@ -319,7 +322,7 @@ const IncomeStatement = () => {
 
     }
 
-    const getNetIncome = () => {
+    const getNetIncome = async () => {
         var incomeBalanceInFunction = 0
 
         //! revenue ////
@@ -372,9 +375,11 @@ const IncomeStatement = () => {
         })
         setLiabilityFinalBalance(liabilityBalance)
 
+    }
 
+    const getIncome = async () => {
         const endingCapitalInFunctionHalf = capitalBalance - drawingBalance
-        const endingCapitalInFunctionFull = Math.sign(incomeBalance) == 1 ? endingCapitalInFunctionHalf + incomeBalance : endingCapitalInFunctionHalf - incomeBalance
+        const endingCapitalInFunctionFull = await (Math.sign(incomeBalance) == 1 ? endingCapitalInFunctionHalf + incomeBalance : endingCapitalInFunctionHalf - incomeBalance)
         setEndingCapital(endingCapitalInFunctionFull)
     }
 
@@ -591,7 +596,7 @@ const IncomeStatement = () => {
             </Table>
 
 
-           {liabilityTotal + endingCapital == assetTotal ?  <h1 style={{color: '#2ECC71'}}>BALANCED</h1> :  <h1 style={{color: 'red'}}>NOT BALANCED</h1>}
+            {liabilityTotal + endingCapital == assetTotal ? <h1 style={{ color: '#2ECC71' }}>BALANCED</h1> : <h1 style={{ color: 'red' }}>NOT BALANCED</h1>}
         </>
     )
 }
