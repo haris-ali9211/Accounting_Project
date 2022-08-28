@@ -177,6 +177,7 @@ const TrialBalance = () => {
 
     return (
         <>
+        <h1>Trial Balance</h1>
            <div>
            <Table striped bordered hover variant="dark" >
                 <thead>

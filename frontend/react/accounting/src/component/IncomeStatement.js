@@ -41,7 +41,6 @@ const IncomeStatement = () => {
     const [drawingBalance, setDrawingBalance] = useState()
 
     const [endingCapital, setEndingCapital] = useState()
-    console.log("🚀 ~ file: IncomeStatement.js ~ line 44 ~ IncomeStatement ~ endingCapital", endingCapital)
 
     const [expenseBalance, setExpenseBalance] = useState()
     const [revenueBalance, setRevenueBalance] = useState()
@@ -62,6 +61,10 @@ const IncomeStatement = () => {
     useEffect(() => {
         filter()
     }, [ledger])
+
+    useEffect(()=>{
+        getIncome()
+    },[capitalBalance,drawingBalance, incomeBalance])
 
 
 
@@ -319,7 +322,7 @@ const IncomeStatement = () => {
 
     }
 
-    const getNetIncome = () => {
+    const getNetIncome = async () => {
         var incomeBalanceInFunction = 0
 
         //! revenue ////
@@ -372,9 +375,11 @@ const IncomeStatement = () => {
         })
         setLiabilityFinalBalance(liabilityBalance)
 
+    }
 
-        const endingCapitalInFunctionHalf = (capitalBalance - drawingBalance)
-        const endingCapitalInFunctionFull = (Math.sign(incomeBalance) == 1 ? endingCapitalInFunctionHalf + incomeBalance : endingCapitalInFunctionHalf - incomeBalance)
+    const getIncome = async () => {
+        const endingCapitalInFunctionHalf = capitalBalance - drawingBalance
+        const endingCapitalInFunctionFull = await (Math.sign(incomeBalance) == 1 ? endingCapitalInFunctionHalf + incomeBalance : endingCapitalInFunctionHalf - incomeBalance)
         setEndingCapital(endingCapitalInFunctionFull)
     }
 
@@ -404,7 +409,7 @@ const IncomeStatement = () => {
 
                     <h4 style={{ color: 'black' }}></h4>
 
-                    {expense && expense.map((obj, key) => {
+                    {expense ? expense.map((obj, key) => {
                         return (
                             <tr>
                                 <td>{key}</td>
@@ -414,7 +419,16 @@ const IncomeStatement = () => {
                                 <td>{obj.date}</td>
                             </tr>
                         )
-                    })}
+                    })
+                :
+                <tr>
+                                <td>key</td>
+                                <td>obj.title</td>
+                                <td>obj.type == 'debit' ? obj.amount : null</td>
+                                <td>obj.type == 'debit' ? obj.amount : null</td>
+                                <td>obj.date</td>
+                            </tr>
+                }
                     <h4 style={{ color: 'black' }}></h4>
 
                     <tr style={{ fontSize: 17, marginTop: 4 }}>
@@ -591,7 +605,7 @@ const IncomeStatement = () => {
             </Table>
 
 
-           {liabilityTotal + endingCapital == assetTotal ?  <h1 style={{color: '#2ECC71'}}>BALANCED</h1> :  <h1 style={{color: 'red'}}>NOT BALANCED</h1>}
+            {liabilityTotal + endingCapital == assetTotal ? <h1 style={{ color: '#2ECC71' }}>BALANCED</h1> : <h1 style={{ color: 'red' }}>NOT BALANCED</h1>}
         </>
     )
 }
