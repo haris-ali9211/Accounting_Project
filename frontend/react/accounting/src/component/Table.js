@@ -9,12 +9,14 @@ import NavBar from './NavBar';
 function DarkExample() {
 
     const [firebaseData, setFirebaseData] = useState([]);
+    console.log("🚀 ~ file: Table.js ~ line 12 ~ DarkExample ~ firebaseData", firebaseData)
     const [stopData, setStopData] = useState(true)
 
     const getDataFromFirebase = async () => {
         get(child(dbRef, `record/`)).then((snapshot) => {
             if (snapshot.exists()) {
-                setFirebaseData(snapshot.val())
+                console.log("🚀 ~ file: Table.js ~ line 19 ~ get ~ snapshot.val()", snapshot.val())
+                setFirebaseData(snapshot.val().reverse())
                 setStopData(false)
             } else {
                 console.log("No data available");
@@ -47,7 +49,6 @@ function DarkExample() {
             </thead>
             <tbody>
                 {firebaseData ? firebaseData.map((obj, key) => {
-                    console.log("🚀 ~ file: Table.js ~ line 46 ~ {firebaseData?firebaseData.map ~ obj", obj.debit)
                     return(
                         <TableContent className='divider' key={key} debit={obj.debit} credit={obj.credit}/>
                     )

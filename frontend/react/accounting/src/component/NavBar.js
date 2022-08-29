@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 function ColorSchemesExample() {
     return (
         <>
-
             <Navbar bg="light" variant="light">
                 <Container>
                     <Link to="/">

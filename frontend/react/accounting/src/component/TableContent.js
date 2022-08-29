@@ -14,6 +14,7 @@ const TableContent = ({ debit, credit }) => {
     
     return (
         <>
+        <h1></h1>
             {debitData && debitData.map((obj, key) => {
                 return (
                     <tr key={key}>
