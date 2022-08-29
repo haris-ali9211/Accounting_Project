@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FirebaseStack from '../firebase/firebasev9';
 import { get, child, ref } from "firebase/database"
 import Table from 'react-bootstrap/Table';
+import NavBar from './NavBar'
 
 
 const IncomeStatement = () => {
@@ -390,7 +391,7 @@ const IncomeStatement = () => {
 
     return (
         <>
-
+            <NavBar/>
             <h3 style={{ color: 'black', fontWeight: 'bold' }}>Income Statement</h3>
 
             <h3 style={{ color: 'black' }}>Expense</h3>

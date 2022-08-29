@@ -40,3 +40,7 @@
   width: 100% !important;
   border-bottom: 2px solid white !important;
 }
+.record-details{
+  display: flex;
+  justify-content: space-evenly;
+}

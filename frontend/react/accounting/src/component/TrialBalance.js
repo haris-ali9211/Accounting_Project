@@ -3,6 +3,7 @@ import FirebaseStack from '../firebase/firebasev9';
 import { ref, get, child, set, orderByChild } from "firebase/database"
 import Table from 'react-bootstrap/Table';
 import LedgerContent from './LedgerContent';
+import NavBar from './NavBar';
 
 
 const TrialBalance = () => {
@@ -177,6 +178,7 @@ const TrialBalance = () => {
 
     return (
         <>
+        <NavBar/>
         <h1>Trial Balance</h1>
            <div>
            <Table striped bordered hover variant="dark" >

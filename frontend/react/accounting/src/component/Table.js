@@ -4,6 +4,7 @@ import { ref, get, child } from "firebase/database"
 import FirebaseStack from '../firebase/firebasev9';
 import TableContent from './TableContent';
 import './App.css';
+import NavBar from './NavBar';
 
 function DarkExample() {
 
@@ -30,7 +31,9 @@ function DarkExample() {
     const dbRef = ref(FirebaseStack());
 
     return (
-        <Table striped bordered hover variant="dark">
+       <>
+       <NavBar/>
+       <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
                     <th>#</th>
@@ -62,6 +65,7 @@ function DarkExample() {
                 }
             </tbody>
         </Table>
+       </>
     );
 }
 
