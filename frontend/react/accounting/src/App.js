@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 
 function App() {
+  console.log('testing main')
   return (
     <>
       <BrowserRouter>
